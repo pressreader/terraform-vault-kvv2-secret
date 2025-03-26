@@ -1,12 +1,4 @@
-# resource "vault_mount" "kv" {
-#   path        = var.mount
-#   type        = "kv"
-#   options     = { version = "2" }
-#   description = "KV Version 2 secret engine mount"
-# }
-
 locals {
-  # Merging the created_by value into the custom_metadata data
   merged_metadata_data = merge(
     var.custom_metadata.data,
     {
