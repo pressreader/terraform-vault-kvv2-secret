@@ -29,7 +29,14 @@ variable "custom_metadata" {
   }
 }
 
-variable "delete_all" {
+variable "created_by" {
+  description = "String to identify who or what created the secret."
+  type        = string
+
+}
+
+
+variable "delete_all_versions" {
   description = "If true, deletes all versions of the secret."
   type        = bool
   default     = false
