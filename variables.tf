@@ -14,8 +14,16 @@ variable "data" {
   type        = map(string)
 }
 
+variable "max_versions" {
+  description = "Custom metadata max_versions of this secret"
+  type        = number
+  default     = 1
+}
 variable "custom_metadata" {
-  description = "Custom metadata to store alongside the secret."
+  description = <<EOT
+  <br><b>max_versions:</b> maximum number of versions, by default 1.
+  <br><b>data:</b> A managed map of how it was created, and merges created_by
+EOT
   type = object({
     max_versions = optional(number)
     data         = optional(map(string), { managed_by = "terraform", module = "https://github.com/pressreader/terraform-vault-kvv2-secret" })
@@ -47,5 +55,3 @@ variable "cas" {
   type        = number
   default     = null
 }
-
-

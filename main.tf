@@ -28,7 +28,7 @@ resource "vault_kv_secret_v2" "secret" {
     for_each = var.custom_metadata != null ? [var.custom_metadata] : []
 
     content {
-      max_versions = lookup(custom_metadata.value, "max_versions", null)
+      max_versions = var.max_versions
 
       data = local.merged_metadata_data
     }
