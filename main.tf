@@ -7,15 +7,6 @@ locals {
   )
 }
 
-output "debug_custom_metadata" {
-  value = {
-    custom_metadata = var.custom_metadata
-    created_by      = var.created_by
-    merged_metadata = local.merged_metadata
-  }
-}
-
-
 resource "vault_kv_secret_v2" "secret" {
 
   mount     = var.mount
