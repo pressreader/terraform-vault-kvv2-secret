@@ -11,7 +11,7 @@ This Terraform module provisions and manages secrets in **HashiCorp Vault KV v2*
 module "vault_kvv_secret" {
   source = "git::https://github.com/pressreader/terraform-vault-kvv2-secret.git"
 
-  name  = "my-secret"
+  name  = "my-secret" #This is typically a path
   data  = { "username" = "admin", "password" = "supersecret" }
   mount = "kvv2"  # Optional, defaults to "kvv2"
 
@@ -33,8 +33,6 @@ module "vault_kvv_secret" {
 | `name`           | `string`    | **(Required)** | Name of the secret in Vault. |
 | `data`           | `map(string)` | **(Required)** | Key-value pairs to store in the secret. |
 | `custom_metadata` | `object`    | See Default | Metadata for the secret. Allows tracking ownership and module reference. |
-| `delete_all`     | `bool`      | `false` | If `true`, deletes all versions of the secret. |
-| `cas`            | `number`    | `null`  | Check-and-set (CAS) value for write operations. |
 | `created_by`     | `string`    | **(Required)** | Identifies the creator of the secret. Merged into `custom_metadata.data`. |
 
 ### Default for `custom_metadata`
@@ -49,9 +47,10 @@ custom_metadata = {
 
 ## Outputs
 
-| Name   | Description |
-|--------|-------------|
-| `path` | Full path of the stored secret in Vault. |
+| Name    | Description |
+|---------|-------------|
+| `id`    | Vault ID    |
+| `path`  | Full path of the stored secret in Vault. |
 | `metadata` | Metadata of the stored secret. |
 
 ## Notes
