@@ -32,17 +32,10 @@ EOT
     max_versions = 1
     data = {
       managed_by = "terraform"
-      module     = "https://github.com/pressreader/terraform-vault-kvv2-secret"
+      created_by = "https://github.com/pressreader/terraform-vault-kvv2-secret"
     }
   }
 }
-
-variable "created_by" {
-  description = "String to identify who or what created the secret."
-  type        = string
-
-}
-
 
 variable "delete_all_versions" {
   description = "If true, deletes all versions of the secret."
