@@ -11,3 +11,7 @@ resource "vault_kv_secret_v2" "secret" {
     data         = var.custom_metadata.data
   }
 }
+
+output "path" {
+  value = vault_kv_secret_v2.secret.path
+}
